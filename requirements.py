@@ -1,4 +1,0 @@
-Django==1.9.2
-wheel==0.29.0
-certifi
-elasticsearch
