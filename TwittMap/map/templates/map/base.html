@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter Map</title>
+    {% block javascript %}
+    {% endblock %}
+</head>
+<body>
+<h1> TwittMap </h1>
+    <!--<form method="POST"  id = "form1" name="SubmitForm" >-->
+        {% csrf_token %}
+        <!--{{ form }}-->
+        <label>Select a trend topic:</label>
+        <select name = "keyword" id = "keys">
+            <option value = 'trump'>Trump</option>
+            <option value = 'food'> food</option>
+            <option value = 'music'>Music</option>
+            <option value = 'oscars'>Oscars</option>
+            <option value='WWEFastLane'>WWEFastLane</option>
+            <option value="'pedro">Pedro (the soccer player)</option>
+            <option value='iHeartAwards'>iHeartAwards</option>
+            <option value="FeudFX">Feud FX</option>
+            <option value="BlackWomenInHollywood">Black Women in Hollywood</option>
+        </select>
+        <button type = "submit" id = "search"/> Submit </button>
+
+    <!--</form>-->
+
+      <div id = trend>
+
+        <p></p>
+    </div>
+    </div>
+    <div id = "googleMap" style = "width:100%; height: 500px;"></div>
+</body>
+<script>function myMap(){
+    var mapProp = {
+          center: new google.maps.LatLng(51.508742,-0.120850),
+          zoom: 3,
+      };
+    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+
+    }
+</script>
+<script src ="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdxkKKGNgYFz7ObC1YwlAzCvhhp3GsHlE&callback=myMap"></script>
+
+
+</html>
