@@ -69,6 +69,22 @@ def index(request):
     for i in data:
         print(i)
     return render(request, 'map/header.html')
+    
+def poll_data(request):
+	while True:
+		try:
+			data_stream =    New_Tweets.objects.all()
+			if len(data_stream)==0:
+				time.sleep(0.5)
+			else:
+				tweets = []
+				for ds in data_stream:
+					tweets.append({"id": ds.id , "tweet": ds.tweet ,"lat": ds.lat ,"lon": ds.lon,"sentiment": ds.sentiment, "score": ds.score })
+					response = {"new_tweets": tweets}
+					New_Tweets.objects.all.delete()
+					return HttpResponse(json.dumps(response), content_type="application/json", status= 200)
+		except:
+			return HttpResponse(json.dumps({}),content_type="application/json",status = 200 )
 
 @csrf_exempt
 def sns_test_handler(request):
