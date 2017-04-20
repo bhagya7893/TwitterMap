@@ -5,7 +5,7 @@ from tweepy.streaming import StreamListener
 import time
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 import urllib2
-from .models import NewTweets
+from .models import New_Tweets
 import json
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
