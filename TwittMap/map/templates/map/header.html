@@ -15,9 +15,8 @@
                 "csrfmiddlewaretoken" : $"[name='csrfmiddlewaretoken']").val()
             },
             success: function(response){
-                var new_tweets = response.new_tweets;
-                $("#new_tweets").text(parseInt($("new_tweets).text())+new_tweets.length)
-                $.fn.poll_request(); #}
+                var new_tweets = response.new_tweets; $("#new_tweets").text(parseInt($("new_tweets").text())+new_tweets.length)
+                $.fn.poll_request(); 
             },
             error: function(error){},
             complete: function(){
