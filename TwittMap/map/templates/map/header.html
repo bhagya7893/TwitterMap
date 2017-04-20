@@ -16,33 +16,32 @@
             },
             success: function(response){
                 var new_tweets = response.new_tweets; $("#new_tweets").text(parseInt($("new_tweets").text())+new_tweets.length)
-                $.fn.poll_request(); 
             },
             error: function(error){},
             complete: function(){
                 $.fn.poll_request();
             }
             });
-        window.ajaxCalls.push(ajaxCall);
       };
 
       setTimeOut($.fn.poll_request,500);
 
     $(document).ready(function(){
         $("#search").click(function(){
-          var mapProp = {
-          center: new google.maps.LatLng(51.508742,-0.120850),
-          zoom: 2,
-        };
-        var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+            $("#new_tweet_num").text(0);
+            var mapProp = {
+            center: new google.maps.LatLng(51.508742,-0.120850),
+            zoom: 2,
+            };
+            var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
-        $.ajax({
-            type: "POST",
-            url: "/pull_stream/",
-            data: {
-                "keyword": $("#keys").val(),
-                "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
-            },
+            $.ajax({
+                type: "POST",
+                url: "/pull_stream/",
+                data: {
+                    "keyword": $("#keys").val(),
+                    "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                },
             success: function(response){
                 var test = "";
                 for(var i=0; i<response.tweet_coordinates.length; i++){
