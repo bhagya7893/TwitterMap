@@ -5,6 +5,29 @@
 
 
 <script>
+    $("#new_tweets").text(0);
+      <!-- to increment counter for new tweets -->
+      $.fn.poll_request = function(){
+            var ajaxCall = $.ajax({
+            url: "//",
+            type: "post",
+            data: {
+                "csrfmiddlewaretoken" : $"[name='csrfmiddlewaretoken']").val()
+            },
+            success: function(response){
+                var new_tweets = response.new_tweets;
+                $("#new_tweets").text(parseInt($("new_tweets).text())+new_tweets.length)
+                $.fn.poll_request(); #}
+            },
+            error: function(error){},
+            complete: function(){
+                $.fn.poll_request();
+            }
+            });
+        window.ajaxCalls.push(ajaxCall);
+      };
+
+      setTimeOut($.fn.poll_request,500);
 
     $(document).ready(function(){
         $("#search").click(function(){
@@ -31,7 +54,16 @@
 
 
                     // Logic for displaying marker on the google map
-                    var pin = "34BA46";
+                    if (senti == 'positive'){
+                        var pin = "34BA46"
+                    }
+
+                    else if (senti == 'negative'){
+                        var pin = "0067a9"
+                    }
+                    else{
+                        var pin = "95a0a9"
+                    }
                     var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" +  pin,
                         new google.maps.Size(20,35),
                         new google.maps.Point(0,0),

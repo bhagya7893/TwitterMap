@@ -11,28 +11,43 @@
     <!--<form method="POST"  id = "form1" name="SubmitForm" >-->
         {% csrf_token %}
         <!--{{ form }}-->
+        <div>
+
+
         <label>Select a trend topic:</label>
+
         <select name = "keyword" id = "keys">
             <option value = 'trump'>Trump</option>
             <option value = 'food'> food</option>
             <option value = 'music'>Music</option>
-            <option value = 'oscars'>Oscars</option>
-            <option value='WWEFastLane'>WWEFastLane</option>
-            <option value="'pedro">Pedro (the soccer player)</option>
-            <option value='iHeartAwards'>iHeartAwards</option>
+            <option value = 'Netflix'>Netflix</option>
+            <option value='politics'>Politics</option>
+            <option value='travel'>Travel</option>
+            <option value='health care bill'>Health Care Bill</option>
             <option value="FeudFX">Feud FX</option>
-            <option value="BlackWomenInHollywood">Black Women in Hollywood</option>
+            <option value="Tech">Tech</option>
         </select>
+
         <button type = "submit" id = "search"/> Submit </button>
+            </div>
+
+        <div>
+            <label>Please select a point on the map</label>
+            <label>Tweets within distnt</label>
+            <input type="number" id="distance" placeholder="Distance in miles" disabled="disabled">
+            <button type = "submit" id = "loc_search" disabled="disabled"/> Submit </button>
+        </div>
+
 
     <!--</form>-->
 
-      <div id = trend>
-
-        <p></p>
+      <div id = "selected_point">
+          <label>Location selected:</label>
+        <label ><span id="selected_lat">null</span></label>
+        <label ><span id="selected_lon">null</span></label>
     </div>
     </div>
-    <div id = "googleMap" style = "width:100%; height: 500px;"></div>
+    <div id = "googleMap" style = "width:100%; height: 600px;"></div>
 </body>
 <script>function myMap(){
     var mapProp = {
@@ -41,10 +56,12 @@
       };
     var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
-
     }
 </script>
 <script src ="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdxkKKGNgYFz7ObC1YwlAzCvhhp3GsHlE&callback=myMap"></script>
+<script>
 
+
+</script>
 
 </html>
