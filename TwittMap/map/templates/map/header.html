@@ -17,14 +17,14 @@
             success: function(response){
                 var new_tweets = response.new_tweets; $("#new_tweets").text(parseInt($("new_tweets").text())+new_tweets.length)
             },
-            error: function(error){},
+            error: function(error){
+            },
             complete: function(){
                 $.fn.poll_request();
             }
             });
       };
-
-      setTimeOut($.fn.poll_request,500);
+      setTimeOut($.fn.poll_request,1000);
 
     $(document).ready(function(){
         $("#search").click(function(){
