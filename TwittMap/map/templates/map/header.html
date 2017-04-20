@@ -9,7 +9,7 @@
       <!-- to increment counter for new tweets -->
       $.fn.poll_request = function(){
             var ajaxCall = $.ajax({
-            url: "//",
+            url: "/poll_data/",
             type: "post",
             data: {
                 "csrfmiddlewaretoken" : $("[name='csrfmiddlewaretoken']").val()
