@@ -4,7 +4,7 @@ from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 import time
 from elasticsearch import Elasticsearch, RequestsHttpConnection
-import urllib2
+import urllib.request
 from .models import New_Tweets
 import json
 from django.http import HttpResponse
@@ -94,8 +94,8 @@ def sns_test_handler(request):
 		if 'Type' in header.keys():
 			if header['Type']=="SubscriptionConfirmation":
 				print("Request Received")
-				urlSub = headers['SubscribeURL']
-				data_response = urllib2.urlopen(urlSub).read()
+				urlSub = header['SubscribeURL']
+				data_response = urllib.request.urlopen(urlSub).read()
 				print("Subscription successful")
 			elif header['Type']=="Notification":
 				print("Received new message" + str(header['Message']))
@@ -106,9 +106,9 @@ def sns_test_handler(request):
 				tweet_lat = new_message.get('lat')
 				tweet_long = new_message.get('lon')
 				tweet_sentiment = new_message.get('senti')
-				tweet_score = message.get('score')
+				tweet_score = new_message.get('score')
 				es = Elasticsearch("https://" + host_demo)
-				es.index(index = name, id=tweet_id, doc_type="tweet", body={"tweet": tweet_text, "location": {"lat": tweet_lat, "lon": tweet_long}, "sentiment":tweet_sentiment, "score": tweet_score})
+				es.index(index = index_name, id=tweet_id, doc_type="tweet", body={"tweet": tweet_text, "location": {"lat": tweet_lat, "lon": tweet_long}, "sentiment":tweet_sentiment, "score": tweet_score})
 				new_Tweet = New_Tweets(id=tweet_id, tweet=tweet_text, lat= tweet_lat, lon= tweet_long, sentiment=tweet_sentiment, score=tweet_score)
 				new_Tweet.save()
 		return render(request, 'map/header.html', {"params": str(request.POST)})		
