@@ -15,7 +15,7 @@ CONSUMER_SECRET = '42aN2HTKBfHV9K22FP2Pu7wrsvtjaB7ZSI0beMkEWGbv0U9wGX'
 sqs = boto3.resource('sqs')
 queue = sqs.create_queue(QueueName = 'tweet', Attributes={'DelaySeconds': '5'})
 
-index_name = "twitter-idx"
+index_name = "tweet-idx"
 
 host = ["https://search-twitter-sentiment-fdwtpqksdm3j6zvpp6bl2b5eru.us-west-2.es.amazonaws.com"]
 #Creating Template
@@ -31,6 +31,9 @@ mapping = {"mappings": {
                 },
                 "sentiment": {
                 	"type": "string"
+                },
+                "score":{
+                	"type": "double"
                 }
             }
         }
