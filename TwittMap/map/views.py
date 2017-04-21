@@ -14,13 +14,11 @@ import certifi
 #from textblob import TextBlob
 
 index_name = "tweet-idx"
-host = "search-twitter-map-h2myw2tj53kyobspflwj2qpuem.us-east-1.es.amazonaws.com"
-host_bhagya = "search-new-twitter-i2pdnr6a2chkajagb2cm5ggd2y.us-west-2.es.amazonaws.com"
 
-host_demo = "search-twitter-sentiment-fdwtpqksdm3j6zvpp6bl2b5eru.us-west-2.es.amazonaws.com"
+host = "search-twitter-map-h2myw2tj53kyobspflwj2qpuem.us-east-1.es.amazonaws.com"
 
 def pull_stream(request):
-    es = Elasticsearch("https://"+host_demo)
+    es = Elasticsearch("https://"+host)
     #print("connect to host")
     if request.method == "POST":
         term = request.POST['keyword']

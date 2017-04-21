@@ -38,7 +38,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/pull_stream/",
+                url: "/poll_data/",
                 data: {
                     "keyword": $("#keys").val(),
                     "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
