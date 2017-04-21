@@ -13,7 +13,7 @@ import certifi
 
 #from textblob import TextBlob
 
-index_name = "twitter-idx"
+index_name = "tweet-idx"
 host = "search-twitter-map-h2myw2tj53kyobspflwj2qpuem.us-east-1.es.amazonaws.com"
 host_bhagya = "search-new-twitter-i2pdnr6a2chkajagb2cm5ggd2y.us-west-2.es.amazonaws.com"
 
@@ -109,6 +109,6 @@ def sns_test_handler(request):
 				tweet_score = message.get('score')
 				es = Elasticsearch("https://" + host_demo)
 				es.index(index = name, id=tweet_id, doc_type="tweet", body={"tweet": tweet_text, "location": {"lat": tweet_lat, "lon": tweet_long}, "sentiment":tweet_sentiment, "score": tweet_score})
-				new_Tweet = New_Tweets(id=tweet_id, tweet=tweet_text, lat= tweet_lat, lon= tweet_lon, sentiment=tweet_sentiment, score=tweet_score)
+				new_Tweet = New_Tweets(id=tweet_id, tweet=tweet_text, lat= tweet_lat, lon= tweet_long, sentiment=tweet_sentiment, score=tweet_score)
 				new_Tweet.save()
 		return render(request, 'map/header.html', {"params": str(request.POST)})		

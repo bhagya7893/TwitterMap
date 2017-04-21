@@ -39,22 +39,22 @@ queue = sqs.get_queue_by_name(QueueName = 'tweet')
 
 es = Elasticsearch(host)
 #es.indices.create(index = "tweet_s", body=mapping, ignore=400)
-mapping = {"mappings": {
-        "tweet": {
-            "properties": {
-                "text": {
-                    "type": "string"
-                },
-                "coordinates": {
-                    "type": "geo_point"
-                },
-                "sentiment": {
-                	"type": "string"		#why is the sentiment type string? it should be numerical??
-                }
-            }
-        }
-}
-}
+#mapping = {"mappings": {
+#        "tweet": {
+#            "properties": {
+#                "text": {
+#                    "type": "string"
+#                },
+#                "coordinates": {
+#                    "type": "geo_point"
+#                },
+#                "sentiment": {
+#                	"type": "string"		#why is the sentiment type string? it should be numerical??
+#                }
+#            }
+#        }
+#}
+#}
 
 def worker_task():
     while True:
