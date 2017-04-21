@@ -76,8 +76,8 @@ def worker_task():
                     senti_score = r['sentiment']['document']['score']
                 except Exception as e:
                     print("ERROR:"+ str(e))
-                    sentiment = "none"
-                    senti_score = 0
+                    #sentiment = "none"
+                    #senti_score = 0
                 ##Using SNS:
                 sns_message = {'id':id, 'tweet':tweet, 'lat': lat, 'lon': lon, 'senti': sentiment, 'score': senti_score }
                 print("SNS message:"+ str(sns_message))
