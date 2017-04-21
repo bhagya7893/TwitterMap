@@ -36,8 +36,10 @@ arn = "arn:aws:sns:us-east-1:040667233965:tweet-map"
 
 queue = sqs.get_queue_by_name(QueueName = 'tweet')
 #sentiment = ["positive","negative","neutral"]
-
 es = Elasticsearch(host)
+if es:
+    print("elastic search host is connected...")
+
 #es.indices.create(index = "tweet_s", body=mapping, ignore=400)
 #mapping = {"mappings": {
 #        "tweet": {
