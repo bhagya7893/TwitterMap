@@ -32,7 +32,7 @@ sqs= boto3.resource('sqs')      #sqs instance
 sns = boto3.client('sns')     #sns instance
 
 ###SNS####
-arn = "arn:aws:sns:us-west-2:936086754664:tweet-sentiment"
+arn = "arn:aws:sns:us-east-1:040667233965:tweet-map"
 
 queue = sqs.get_queue_by_name(QueueName = 'tweet')
 #sentiment = ["positive","negative","neutral"]
