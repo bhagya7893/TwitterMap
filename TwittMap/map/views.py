@@ -39,7 +39,7 @@ def pull_stream(request):
         return render(request, 'map/header.html')
 
 def tweets_location(request):
-    es = Elasticsearch("https://"+host_demo)
+    es = Elasticsearch("https://"+host)
     #print("connect to host")
     response ={}
     if request.method == "POST":
@@ -105,7 +105,7 @@ def sns_test_handler(request):
 				tweet_long = new_message.get('lon')
 				tweet_sentiment = new_message.get('senti')
 				tweet_score = new_message.get('score')
-				es = Elasticsearch("https://" + host_demo)
+				es = Elasticsearch("https://" + host)
 				es.index(index = index_name, id=tweet_id, doc_type="tweet", body={"tweet": tweet_text, "location": {"lat": tweet_lat, "lon": tweet_long}, "sentiment":tweet_sentiment, "score": tweet_score})
 				new_Tweet = New_Tweets(id=tweet_id, tweet=tweet_text, lat= tweet_lat, lon= tweet_long, sentiment=tweet_sentiment, score=tweet_score)
 				new_Tweet.save()

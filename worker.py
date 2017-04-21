@@ -26,7 +26,7 @@ nlu = NaturalLanguageUnderstandingV1(
 # print(r['sentiment']['document']['label'])
 #print(json.dumps(response, indent=2))
 
-host = ["https://search-twitter-sentiment-fdwtpqksdm3j6zvpp6bl2b5eru.us-west-2.es.amazonaws.com"]
+host = ["search-twitter-map-h2myw2tj53kyobspflwj2qpuem.us-east-1.es.amazonaws.com"]
 
 sqs= boto3.resource('sqs')      #sqs instance
 sns = boto3.client('sns')     #sns instance
@@ -74,7 +74,7 @@ def worker_task():
                     senti_score = r['sentiment']['document']['score']
                 except Exception as e:
                     print("ERROR:"+ str(e))
-                    sentiment = "neutral"
+                    sentiment = "none"
                     senti_score = 0
                 ##Using SNS:
                 sns_message = {'id':id, 'tweet':tweet, 'lat': lat, 'lon': lon, 'senti': sentiment, 'score': senti_score }

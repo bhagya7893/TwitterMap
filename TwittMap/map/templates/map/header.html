@@ -16,6 +16,7 @@
             },
             success: function(response){
                 var new_tweets = response.new_tweets;
+
                 $("#new_tweets").text(parseInt($("#new_tweets").text())+new_tweets.length);
             },
             error: function(error){
