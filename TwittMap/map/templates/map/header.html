@@ -8,31 +8,7 @@
 
     $(document).ready(function(){
 
-        $("#new_tweets").text(0);
-            <!-- to increment counter for new tweets -->
-            $.fn.poll_request = function(){
-                var ajaxCall = $.ajax({
-                url: "/poll_data/",
-                type: "POST",
-                data: {
-                    "csrfmiddlewaretoken" : $("[name='csrfmiddlewaretoken']").val()
-                },
-                success: function(response){
-                    var new_tweets = response.new_tweets;
-
-                    $("#new_tweets").text(parseInt($("#new_tweets").text())+new_tweets.length);
-                },
-                error: function(error){
-                },
-                complete: function(){
-                    $.fn.poll_request();
-                }
-                });
-            };
-        setTimeout($.fn.poll_request,1000);
-
         $("#search").click(function(){
-            $("#new_tweet_num").text(0);
             var mapProp = {
             center: new google.maps.LatLng(51.508742,-0.120850),
             zoom: 2,
@@ -41,7 +17,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/poll_data/",
+                url: "/pull_stream/",
                 data: {
                     "keyword": $("#keys").val(),
                     "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
@@ -52,11 +28,12 @@
                     var tweet = response.tweet_coordinates[i][0];
                     var lat = parseFloat(response.tweet_coordinates[i][1]['lat']);
                     var lon = parseFloat(response.tweet_coordinates[i][1]['lon']);
+                    var senti = response.tweet_coordinates[i][1]['senti'];
                     console.log(tweet+": ("+lat+","+lon+")");
 
 
                     // Logic for displaying marker on the google map
-                    if (senti == 'positive'){
+                    if (senti == 'pos'){
                         var pin = "34BA46"
                     }
 

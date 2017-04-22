@@ -59,9 +59,9 @@ def tweets_location(request):
 
 def index(request):
 
-    data = sns_test_handler(request)
-    for i in data:
-        print(i)
+    # data = (request)
+    # for i in data:
+    #     print(i)
     return render(request, 'map/header.html')
     
 def poll_data(request):
@@ -83,7 +83,7 @@ def poll_data(request):
 @csrf_exempt
 def sns_test_handler(request):
 	if request.method == "POST":
-		header = json.loads(request.body)
+		header = json.loads(request.body.decode('utf-8'))
 		print("Post Request")
 		if 'Type' in header.keys():
 			if header['Type']=="SubscriptionConfirmation":
@@ -107,6 +107,6 @@ def sns_test_handler(request):
 				es.index(index = index_name, id=tweet_id, doc_type="tweet", body={"tweet": tweet_text, "location": {"lat": tweet_lat, "lon": tweet_long}, "sentiment":tweet_sentiment, "score": tweet_score})
 
 				## New_Tweet from Models:
-				new_Tweet = New_Tweets(id=tweet_id, tweet=tweet_text, lat= tweet_lat, lon= tweet_long, sentiment=tweet_sentiment, score=tweet_score)
-				new_Tweet.save()
+				#new_Tweet = New_Tweets(id=tweet_id, tweet=tweet_text, lat= tweet_lat, lon= tweet_long, sentiment=tweet_sentiment, score=tweet_score)
+				#new_Tweet.save()
 		return render(request, 'map/header.html', {"params": str(request.POST)})		
