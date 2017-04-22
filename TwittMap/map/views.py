@@ -58,11 +58,7 @@ def tweets_location(request):
 
 
 def index(request):
-    #GEOBOX_WORLD = [-180,-90,180,90]
-    #streamer = TweetStreamListener()
-    #stream = Stream(auth,streamer, timeout=500)
-    #stream.filter(locations=GEOBOX_WORLD, languages=['en'], track=['springbreak','trump','WWE','food','#WomensHistoryMonth','UPElectiond2017',''])
-    #upload_tweets(host_demo,"tweetstream.json",index_name)
+
     data = pull_stream(request)
     for i in data:
         print(i)
