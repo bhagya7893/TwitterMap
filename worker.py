@@ -26,7 +26,7 @@ nlu = NaturalLanguageUnderstandingV1(
 # print(r['sentiment']['document']['label'])
 #print(json.dumps(response, indent=2))
 
-host = ["search-twitter-map-h2myw2tj53kyobspflwj2qpuem.us-east-1.es.amazonaws.com"]
+host = "search-twitter-map-h2myw2tj53kyobspflwj2qpuem.us-east-1.es.amazonaws.com"
 
 index_name = "tweet-idx"
 sqs= boto3.resource('sqs')      #sqs instance
@@ -41,23 +41,6 @@ es = Elasticsearch(host)
 if es:
     print("elastic search host is connected...")
 
-#es.indices.create(index = "tweet_s", body=mapping, ignore=400)
-#mapping = {"mappings": {
-#        "tweet": {
-#            "properties": {
-#                "text": {
-#                    "type": "string"
-#                },
-#                "coordinates": {
-#                    "type": "geo_point"
-#                },
-#                "sentiment": {
-#                	"type": "string"		#why is the sentiment type string? it should be numerical??
-#                }
-#            }
-#        }
-#}
-#}
 
 def worker_task():
     while True:

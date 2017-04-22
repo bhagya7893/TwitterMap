@@ -23,7 +23,7 @@ def pull_stream(request):
     if request.method == "POST":
         term = request.POST['keyword']
         #print(term)
-        total = es.search(index="final-data", body= {"from":0, "size": 5000, "query": {"match": {"tweet": term}}})
+        total = es.search(index=index_name, body= {"from":0, "size": 5000, "query": {"match": {"tweet": term}}})
         #print(total)
         result = []
         for rec in total['hits']['hits']:
@@ -31,7 +31,7 @@ def pull_stream(request):
             #print(rec['_source']['location'])
             result.append([rec['_source']['tweet'], rec['_source']['location']])
         response ={"tweet_coordinates":result, "num_records":len(result)}
-        #print(response)
+        print(response)
         #return render(response, 'map/header.html')
         # return(term)
         return HttpResponse(json.dumps(response), content_type="application/json",status=200)
@@ -59,7 +59,7 @@ def tweets_location(request):
 
 def index(request):
 
-    data = pull_stream(request)
+    data = sns_test_handler(request)
     for i in data:
         print(i)
     return render(request, 'map/header.html')
@@ -101,8 +101,12 @@ def sns_test_handler(request):
 				tweet_long = new_message.get('lon')
 				tweet_sentiment = new_message.get('senti')
 				tweet_score = new_message.get('score')
+
+				##Elastic search index being filled:
 				es = Elasticsearch("https://" + host)
 				es.index(index = index_name, id=tweet_id, doc_type="tweet", body={"tweet": tweet_text, "location": {"lat": tweet_lat, "lon": tweet_long}, "sentiment":tweet_sentiment, "score": tweet_score})
+
+				## New_Tweet from Models:
 				new_Tweet = New_Tweets(id=tweet_id, tweet=tweet_text, lat= tweet_lat, lon= tweet_long, sentiment=tweet_sentiment, score=tweet_score)
 				new_Tweet.save()
 		return render(request, 'map/header.html', {"params": str(request.POST)})		
