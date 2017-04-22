@@ -15,7 +15,7 @@ import certifi
 
 index_name = "tweet-idx"
 
-host = "search-twitter-map-h2myw2tj53kyobspflwj2qpuem.us-east-1.es.amazonaws.com"
+host = "search-twitter-sentiment-fdwtpqksdm3j6zvpp6bl2b5eru.us-west-2.es.amazonaws.com"
 
 def pull_stream(request):
     es = Elasticsearch("https://"+host)

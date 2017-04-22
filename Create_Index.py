@@ -17,7 +17,7 @@ queue = sqs.create_queue(QueueName = 'tweet', Attributes={'DelaySeconds': '5'})
 
 index_name = "tweet-idx"
 
-host = ["https://search-twitter-sentiment-fdwtpqksdm3j6zvpp6bl2b5eru.us-west-2.es.amazonaws.com"]
+host = "https://search-twitter-sentiment-fdwtpqksdm3j6zvpp6bl2b5eru.us-west-2.es.amazonaws.com"
 #Creating Template
 
 mapping = {"mappings": {
