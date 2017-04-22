@@ -18,17 +18,6 @@ nlu = NaturalLanguageUnderstandingV1(
      )
 
 
-# ##function to get
-# response = nlu.analyze(
-#     text='The quick brown fox jumped over the lazy dog',
-#     features = [features.Sentiment()]
-# )
-#
-# s = json.dumps(response)
-# r = json.loads(s)
-# print(r['sentiment']['document']['label'])
-#print(json.dumps(response, indent=2))
-
 host = "https://search-twitter-sentiment-map-ub6eu35cqjh6kxwgwkzenq4znm.us-east-1.es.amazonaws.com"
 
 index_name = "tweet-idx"
