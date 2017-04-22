@@ -34,8 +34,8 @@ host = "https://search-twitter-sentiment-map-ub6eu35cqjh6kxwgwkzenq4znm.us-east-
 index_name = "tweet-idx"
 sqs= boto3.resource('sqs')      #sqs instance
 sns = boto3.client('sns',
-                   aws_access_key_id = "AKIAI6ONNS5N2XLLELFA",
-                   aws_secret_access_key="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",
+                   #aws_access_key_id = "AKIAI6ONNS5N2XLLELFA",
+                   #aws_secret_access_key="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",
                    region_name= "us-east-1"
                    )     #sns instance
 
