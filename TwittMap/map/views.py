@@ -29,7 +29,8 @@ def pull_stream(request):
         for rec in total['hits']['hits']:
             #print(rec['_source']['tweet'])
             #print(rec['_source']['location'])
-            result.append([rec['_source']['tweet'], rec['_source']['location']])
+            result.append([rec['_source']['tweet'], rec['_source']['location'], rec['_source']['senti'], rec['_source']['score']])
+
         response ={"tweet_coordinates":result, "num_records":len(result)}
         print(response)
         #return render(response, 'map/header.html')
