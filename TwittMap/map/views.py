@@ -32,7 +32,7 @@ def pull_stream(request):
             #print(rec['_source']['tweet'])
             #print(rec['_source']['location'])
 
-            result.append([rec['_source']['tweet'], rec['_source']['location']])
+            result.append([rec['_source']['tweet'], rec['_source']['location'], rec['_source']['sentiment']])
 
         response ={"tweet_coordinates":result, "num_records":len(result)}
         print(response)
