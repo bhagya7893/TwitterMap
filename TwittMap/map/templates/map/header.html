@@ -28,6 +28,14 @@
                 var pos_pin = "339933"
                 var neg_pin = "ff0000"
                 var marker;
+                var pin_icon;
+
+                var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" +  pin,
+                        new google.maps.Size(20,35),
+                        new google.maps.Point(0,0),
+                        new google.maps.Point(0,32)
+                    );
+
                 for(var i=0; i<response.tweet_coordinates.length; i++){
                     var tweet = response.tweet_coordinates[i][0];
                     var lat = parseFloat(response.tweet_coordinates[i][1]['lat']);
@@ -40,11 +48,13 @@
 
                     // Logic for displaying marker on the google map
                     if (senti == "positive"){
-                        pin = pos_pin
+                        pin = pos_pin;
+
                     }
 
                     else if (senti == "negative"){
-                        pin = neg_pin
+                        pin = neg_pin;
+
                     }
 
                     var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" +  pin,
@@ -58,6 +68,7 @@
                     marker = new google.maps.Marker({
                         position: LatLng,
                         title: tweet,
+                        icon: pinImage
                         map: map
                     });
 
