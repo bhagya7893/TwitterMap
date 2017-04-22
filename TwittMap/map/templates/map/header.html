@@ -28,7 +28,7 @@
                     var tweet = response.tweet_coordinates[i][0];
                     var lat = parseFloat(response.tweet_coordinates[i][1]['lat']);
                     var lon = parseFloat(response.tweet_coordinates[i][1]['lon']);
-                    var senti = response.tweet_coordinates[i]['senti'];
+                    var senti = response.tweet_coordinates[i][2];
                     console.log(tweet+": ("+lat+","+lon+")");
 
 
