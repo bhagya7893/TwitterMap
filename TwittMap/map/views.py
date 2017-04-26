@@ -28,9 +28,6 @@ def pull_stream(request):
         result = []
         for rec in total['hits']['hits']:
             print(rec)
-			#result[rec]
-            #print(rec['_source']['tweet'])
-            #print(rec['_source']['location'])
 
             result.append([rec['_source']['tweet'], rec['_source']['location'], rec['_source']['sentiment']])
 

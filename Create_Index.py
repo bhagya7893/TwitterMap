@@ -13,7 +13,7 @@ CONSUMER_KEY = 'RCLlUnG5j0fMkCAaFnW3K0x7K'
 CONSUMER_SECRET = '42aN2HTKBfHV9K22FP2Pu7wrsvtjaB7ZSI0beMkEWGbv0U9wGX'
 
 sqs = boto3.resource('sqs')
-queue = sqs.create_queue(QueueName = 'tweet', Attributes={'DelaySeconds': '5'})
+queue = sqs.create_queue(QueueName = 'tweet_sentiment')
 
 index_name = "tweet-idx"
 

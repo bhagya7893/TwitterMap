@@ -18,7 +18,7 @@ nlu = NaturalLanguageUnderstandingV1(
      )
 
 
-host = "https://search-twitter-sentiment-map-ub6eu35cqjh6kxwgwkzenq4znm.us-east-1.es.amazonaws.com"
+host = "https://search-twitter-sentiment-fdwtpqksdm3j6zvpp6bl2b5eru.us-west-2.es.amazonaws.com"
 
 index_name = "tweet-idx"
 sqs= boto3.resource('sqs')      #sqs instance
@@ -28,11 +28,11 @@ sns = boto3.client('sns')     #sns instance
 
 #topic_arn = topic['TopicArn']       #get ARN
 
-arn = "arn:aws:sns:us-east-1:040667233965:tweets"
+arn = "aws:sns:us-west-2:936086754664:sentiment-demo"
 
 print(arn)
 
-queue = sqs.get_queue_by_name(QueueName = 'tweet')
+queue = sqs.get_queue_by_name(QueueName = 'tweet_sentiment')
 #sentiment = ["positive","negative","neutral"]
 
 if queue:
