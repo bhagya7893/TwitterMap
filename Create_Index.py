@@ -15,7 +15,7 @@ CONSUMER_SECRET = '42aN2HTKBfHV9K22FP2Pu7wrsvtjaB7ZSI0beMkEWGbv0U9wGX'
 sqs = boto3.resource('sqs')
 queue = sqs.create_queue(QueueName = 'tweet_sentiment')
 
-index_name = "tweet-idx"
+index_name = "tweet-senti-idx"
 
 host = "https://search-twitter-sentiment-fdwtpqksdm3j6zvpp6bl2b5eru.us-west-2.es.amazonaws.com"
 #Creating Template
@@ -85,7 +85,7 @@ if __name__=='__main__':
 	auth = OAuthHandler(CONSUMER_KEY,CONSUMER_SECRET)
 	auth.set_access_token(ACCESS_TOKEN,ACCESS_SECRET)
 	stream = Stream(auth, t)
-	stream.filter(languages = ['en'], track = ['Afganistan', 'trump','googlecloud','Cloudera', 'MOAB','football','elections','food','music'])
+	stream.filter(languages = ['en'], track = ['Afganistan','trump', 'Obama','france','elections','food','music'])
 
                               
 

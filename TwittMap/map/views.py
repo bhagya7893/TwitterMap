@@ -13,7 +13,7 @@ import certifi
 
 #from textblob import TextBlob
 
-index_name = "tweet-idx"
+index_name = "tweet-senti-idx"
 
 host = "search-twitter-sentiment-fdwtpqksdm3j6zvpp6bl2b5eru.us-west-2.es.amazonaws.com"
 

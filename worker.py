@@ -11,16 +11,16 @@ import watson_developer_cloud.natural_language_understanding.features.v1 as feat
 ## establish connection with watson API
 nlu = NaturalLanguageUnderstandingV1(
     version='2012-02-27',
-    username= "14836d99-7f71-4da6-aaf7-582cd56e6443",   #bhagya
-    password= "Yzy346wlSqek"
-    #username='5e95d8c8-cebe-4ed6-bc9b-6e6f14c4dbab',   #Suhita
-    #password='pF2RFmRaq6tP'
+    #username= "14836d99-7f71-4da6-aaf7-582cd56e6443",   #bhagya
+    #password= "Yzy346wlSqek"
+    username='5e95d8c8-cebe-4ed6-bc9b-6e6f14c4dbab',   #Suhita
+    password='pF2RFmRaq6tP'
      )
 
 
 host = "https://search-twitter-sentiment-fdwtpqksdm3j6zvpp6bl2b5eru.us-west-2.es.amazonaws.com"
 
-index_name = "tweet-idx"
+index_name = "tweet-senti-idx"
 sqs= boto3.resource('sqs')      #sqs instance
 sns = boto3.client('sns')     #sns instance
 
