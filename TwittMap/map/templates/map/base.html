@@ -34,6 +34,16 @@
         </div>
 
         <div>
+            <label> Legend </label>
+	<br/>
+	{% load static %}
+	<img src="{% static 'images/green.png' %}"/> <label> Positive sentiment </label>
+        <img src="{% static 'images/red.png' %}"/> <label> Negative sentiment </label>
+        <img src="{% static 'images/blue.jpg' %}"/> <label> Neutral sentiment </label>
+
+        </div>
+
+        <div>
             <label>Please select a point on the map</label>
             <label>Tweets within distnt</label>
             <input type="number" id="distance" placeholder="Distance in miles" disabled="disabled">

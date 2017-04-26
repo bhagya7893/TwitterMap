@@ -24,13 +24,13 @@ index_name = "tweet-idx"
 sqs= boto3.resource('sqs')      #sqs instance
 sns = boto3.client('sns')     #sns instance
 
-#topic = sns.create_topic(Name = "tweets")
+#topic = sns.create_topic(Name = "tweets_demo")
 
 #topic_arn = topic['TopicArn']       #get ARN
 
-arn = "aws:sns:us-west-2:936086754664:sentiment-demo"
+arn = "arn:aws:sns:us-east-1:040667233965:tweet-demo"
 
-print(arn)
+#print(arn)
 
 queue = sqs.get_queue_by_name(QueueName = 'tweet_sentiment')
 #sentiment = ["positive","negative","neutral"]
@@ -50,7 +50,7 @@ def worker_task():
         sns.subscribe(
                         TopicArn = arn,
                         Protocol = 'http',
-                        Endpoint = 'http://twittmap-env.3njd2hppbi.us-east-1.elasticbeanstalk.com/'
+                        Endpoint = 'http://twitter-senti-env.2mvfwajxvd.us-east-1.elasticbeanstalk.com/sns_test_handler/'
                     )
         if len(msgs)>0:
             for message in msgs:
